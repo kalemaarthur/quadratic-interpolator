@@ -1,0 +1,18 @@
+# build files
+*.o
+*.obj
+*.exe
+*.vvp
+*.vcd
+*.out
+*.txt
+
+# GTKWave
+*.gtkw
+
+# C++ build
+QuadraTb
+compare_points
+
+# OS
+.DS_Store
