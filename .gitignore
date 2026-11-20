@@ -1,18 +1,19 @@
-# build files
-*.o
-*.obj
-*.exe
+
+# Simulation outputs
 *.vvp
 *.vcd
-*.out
-*.txt
+*.fst
+obj_dir/
 
-# GTKWave
-*.gtkw
+# Python cache
+__pycache__/
+*.pyc
 
-# C++ build
-QuadraTb
-compare_points
+# Generated verification results
+verification/results.csv
+verification/verification_report.md
 
-# OS
-.DS_Store
+# Temporary files and backups
+*.bak
+*.backup
+*.orig

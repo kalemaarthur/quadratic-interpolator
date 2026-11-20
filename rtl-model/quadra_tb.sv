@@ -29,14 +29,13 @@ module quadra_tb;
         forever #(`T_CLK/2) clk = ~clk;
     end
 
-    // reset
-    initial begin
-        rst_b = 1'b1;
-        repeat(2) @(posedge clk);
-        rst_b = 1'b0;
-        repeat(1) @(posedge clk);
-        rst_b = 1'b1;
-    end
+   
+initial begin
+    rst_b = 1'b0;
+    repeat (3) @(negedge clk);
+    rst_b = 1'b1;
+end
+
 
     // waveform + monitor
     initial begin
@@ -57,30 +56,30 @@ module quadra_tb;
                  y);
     end
 
-    initial begin
-        integer i;
+    
+initial begin
+    $display("Started quadra_tb ...");
 
-        $display("Started quadra_tb ...");
+    x    = '0;
+    x_dv = 1'b0;
 
-        x    = '0;
-        x_dv = 1'b0;
+    repeat (5) @(negedge clk);
 
-        repeat (5) @(posedge clk);
+    x = 24'h000000; x_dv = 1'b1; @(negedge clk);
+    x = 24'h400000; x_dv = 1'b1; @(negedge clk);
+    x = 24'h7fffff; x_dv = 1'b1; @(negedge clk);
+    x = 24'h800000; x_dv = 1'b1; @(negedge clk);
+    x = 24'hc00000; x_dv = 1'b1; @(negedge clk);
+    x = 24'hffffff; x_dv = 1'b1; @(negedge clk);
 
-        x = 24'h000000; x_dv = 1'b1; @(posedge clk);
-        x = 24'h400000; x_dv = 1'b1; @(posedge clk);
-        x = 24'h7fffff; x_dv = 1'b1; @(posedge clk);
-        x = 24'h800000; x_dv = 1'b1; @(posedge clk);
-        x = 24'hc00000; x_dv = 1'b1; @(posedge clk);
-        x = 24'hffffff; x_dv = 1'b1; @(posedge clk);
-       
-        x   = '0;
-        x_dv = 1'b0;
-       
-        repeat (10) @(posedge clk);
-        $display("Simulation finished.");
-        $finish;
+    x    = '0;
+    x_dv = 1'b0;
 
- end
+    repeat (10) @(negedge clk);
+
+    $display("Simulation finished.");
+    $finish;
+end
+
 
 endmodule
