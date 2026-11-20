@@ -1,7 +1,6 @@
 
 name: RTL Simulation and Verification
 
-
 on:
   push:
   pull_request:
@@ -15,24 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Get repository files
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
-      - name: Install simulation tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y iverilog
-
-      - name: Run RTL simulation
-        run: make sim
-
-      - name: Run numerical verification
-        run: make verify
-
-
-      - name: Run generic hardware synthesis
-        run: make synth
-
+      # Step 2: Install ALL required tools
       - name: Install simulation and synthesis tools
         run: |
           sudo apt-get update
@@ -40,4 +26,14 @@ jobs:
           iverilog -V | head -n 1
           yosys -V
 
+      # Step 3: Run RTL simulation
+      - name: Run RTL simulation
+        run: make sim
 
+      # Step 4: Verify numerical accuracy
+      - name: Run numerical verification
+        run: make verify
+
+      # Step 5: Synthesize hardware
+      - name: Run generic hardware synthesis
+        run: make synth
