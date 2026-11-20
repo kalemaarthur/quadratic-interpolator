@@ -33,3 +33,11 @@ jobs:
       - name: Run generic hardware synthesis
         run: make synth
 
+      - name: Install simulation and synthesis tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog yosys
+          iverilog -V | head -n 1
+          yosys -V
+
+
