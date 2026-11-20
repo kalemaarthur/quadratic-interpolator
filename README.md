@@ -226,3 +226,13 @@ These results represent generic technology-independent
 logic cells. FPGA-specific LUT, DSP, BRAM utilization,
 timing closure, and maximum clock frequency have not
 yet been measured.
+
+## Hardware Architecture
+
+The accelerator uses 128 quadratic segments, fixed-point
+coefficient lookup tables, a combinational arithmetic
+datapath, and a three-stage registered output pipeline.
+
+For a detailed architecture diagram, fixed-point formats,
+verification results, and synthesis analysis, see the
+[Hardware Architecture Documentation](docs/ARCHITECTURE.md).
