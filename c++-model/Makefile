@@ -88,3 +88,17 @@ run: $(TGT_OUT)/$(TGT_EXE)
 clean:
 	@echo 'Cleaning ...'
 	rm -f $(OBJECTS) $(TGT_EXE)
+
+
+# C++ vs RTL cross-verification
+AC_TYPES_INCLUDE ?= $(HOME)/ac_types/include
+
+.PHONY: compare
+
+compare: verify
+	g++ -std=c++17 -O2 -Wall \
+		-I$(AC_TYPES_INCLUDE) \
+		c++-model/compare_rtl.cpp \
+		c++-model/Quadra.cpp \
+		-o c++-model/CompareRTL
+	./c++-model/CompareRTL

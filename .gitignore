@@ -12,8 +12,15 @@ __pycache__/
 # Generated verification results
 verification/results.csv
 verification/verification_report.md
+c++-model/CompareRTL
 
 # Temporary files and backups
 *.bak
 *.backup
 *.orig
+
+
+# C++ compilation outputs
+*.o
+c++-model/QuadraTb
+c++-model/CompareRTL

@@ -84,13 +84,25 @@ bool testFunction (void)
     return ok_sts;
 }
 
-int main (int argc, char *argv[])
+
+int main()
 {
-    bool ok_sts = true;
+    std::cout << "====================================\n";
+    std::cout << " Quadratic Approximation - C++ Test\n";
+    std::cout << "====================================\n";
 
-    ok_sts &= testFunction();
+    bool passed = testFunction();
 
-    int ret_sts = (ok_sts) ? 0 : -1;
+    std::cout << "Test vectors: 65281\n";
+    std::cout << "Error tolerance: " << ERR_TOL << "\n";
 
-    return ret_sts;
+    if (passed) {
+        std::cout << "Result: PASS\n";
+    } else {
+        std::cout << "Result: FAIL\n";
+    }
+
+    std::cout << "====================================\n";
+
+    return passed ? 0 : 1;
 }
