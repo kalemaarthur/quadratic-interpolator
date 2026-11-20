@@ -1,6 +1,7 @@
 
 name: RTL Simulation and Verification
 
+
 on:
   push:
   pull_request:
@@ -27,3 +28,8 @@ jobs:
 
       - name: Run numerical verification
         run: make verify
+
+
+      - name: Run generic hardware synthesis
+        run: make synth
+

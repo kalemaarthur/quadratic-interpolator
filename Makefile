@@ -32,3 +32,14 @@ compare: verify
 		c++-model/Quadra.cpp \
 		-o c++-model/CompareRTL
 	./c++-model/CompareRTL
+
+
+# Generic hardware synthesis using Yosys
+.PHONY: synth
+
+synth:
+	cd rtl-model && yosys -Q \
+		-l ../yosys_synthesis.log \
+		-p 'read_verilog -sv -I. quadra_top.sv quadra.sv lut.sv square.sv; hierarchy -check -top quadra_top; synth -top quadra_top; check -assert; stat'
+	@echo "Synthesis completed successfully."
+	@echo "Report: yosys_synthesis.log"

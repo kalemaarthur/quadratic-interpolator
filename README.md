@@ -200,3 +200,29 @@ The current GitHub Actions workflow runs `make sim` and `make verify` on Ubuntu.
 ## Project status
 
 **Working, simulation-verified portfolio implementation.** The project demonstrates RTL design and sampled fixed-point verification; no physical FPGA deployment is claimed.
+
+
+## Hardware Synthesis Results
+
+The SystemVerilog design was successfully synthesized
+using Yosys 0.33.
+
+| Metric | Result |
+|---|---:|
+| Generic logic cells | 7,024 |
+| Flip-flop cells | 78 |
+| Wires | 6,898 |
+| Wire bits | 7,623 |
+| Top module | quadra_top |
+
+The design uses a three-stage registered output pipeline
+with 25-bit output data and a corresponding valid signal.
+
+Run synthesis locally using:
+
+`make synth`
+
+These results represent generic technology-independent
+logic cells. FPGA-specific LUT, DSP, BRAM utilization,
+timing closure, and maximum clock frequency have not
+yet been measured.
